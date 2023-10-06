@@ -1,3 +1,4 @@
+
 const Player = () => (
   <div className="player">
     <video src="#" className="player__video" poster="img/player-poster.jpg" />
@@ -38,3 +39,4 @@ const Player = () => (
 );
 
 export default Player;
+

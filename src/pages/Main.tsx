@@ -1,3 +1,4 @@
+
 import MovieCard from '../components/MovieCard';
 
 type MainProps = {
@@ -273,3 +274,4 @@ function Main(props: MainProps): JSX.Element {
 }
 
 export default Main;
+
