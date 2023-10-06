@@ -1,3 +1,4 @@
+
 const SignIn = () => (
   <div className="user-page">
     <header className="page-header user-page__head">
@@ -71,3 +72,4 @@ const SignIn = () => (
 );
 
 export default SignIn;
+

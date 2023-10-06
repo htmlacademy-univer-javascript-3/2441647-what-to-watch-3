@@ -1,3 +1,4 @@
+
 const MoviePage = () => (
   <>
     <section className="film-card film-card--full">
@@ -229,3 +230,4 @@ const MoviePage = () => (
 );
 
 export default MoviePage;
+
