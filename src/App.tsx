@@ -1,4 +1,3 @@
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Main from './pages/Main';
 import Layout from './components/Layout';
@@ -8,13 +7,19 @@ import SignIn from './pages/SignIn';
 import LayoutFilms from './components/LayoutFilms';
 import Page404 from './pages/Page404';
 import Review from './pages/Review';
-type MainProps = {
-  filmName: string;
-  genre: string;
-  year: number;
-  promo: string;
-};
-function App(mainProps: MainProps): JSX.Element {
+import { FilmType, filmsList } from './mocks/films';
+import { useCallback, useEffect, useState } from 'react';
+import Player from './pages/Player';
+function App(): JSX.Element {
+  const [currentFilm, setCurrentFilm] = useState(filmsList[0]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const onClickHandler = useCallback((item: FilmType) => {
+    setCurrentFilm(item);
+  }, []);
   return (
     <BrowserRouter>
       <Routes>
@@ -23,19 +28,36 @@ function App(mainProps: MainProps): JSX.Element {
             index
             element={
               <Main
-                filmName={mainProps.filmName}
-                year={mainProps.year}
-                genre={mainProps.genre}
-                promo={mainProps.promo}
+                film={currentFilm}
+                filmsList={filmsList}
+                onClickHandler={onClickHandler}
               />
             }
           />
           <Route path="login" element={<SignIn />} />
-          <Route path="myList" element={<List />} />
+          <Route
+            path="myList"
+            element={
+              <List filmsList={filmsList} onClickHandler={onClickHandler} />
+            }
+          />
           <Route path="films/" element={<LayoutFilms />}>
-            <Route path=":id/" element={<MoviePage />}></Route>
-            <Route path=":id/reviews" element={<Review />} />
+            <Route
+              path=":id/"
+              element={
+                <MoviePage
+                  film={currentFilm}
+                  filmsList={filmsList}
+                  onClickHandler={onClickHandler}
+                />
+              }
+            />
+            <Route path=":id/reviews" element={<Review film={currentFilm} />} />
           </Route>
+          <Route
+            path="/player/:id"
+            element={<Player poster={currentFilm.promo} videoSrc={''} />}
+          />
         </Route>
         <Route path="*" element={<Page404 />}></Route>
       </Routes>

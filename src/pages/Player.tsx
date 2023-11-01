@@ -1,11 +1,16 @@
-
-const Player = () => (
+/* eslint-disable react/prop-types */
+import { Link } from 'react-router-dom';
+interface PlayerProps {
+  poster: string;
+  videoSrc: string;
+}
+const Player: React.FC<PlayerProps> = ({ poster, videoSrc }) => (
   <div className="player">
-    <video src="#" className="player__video" poster="img/player-poster.jpg" />
+    <video src={videoSrc} className="player__video" poster={poster} />
 
-    <button type="button" className="player__exit">
+    <Link to={'/'} type="button" className="player__exit">
       Exit
-    </button>
+    </Link>
 
     <div className="player__controls">
       <div className="player__controls-row">
@@ -39,4 +44,3 @@ const Player = () => (
 );
 
 export default Player;
-
