@@ -6,7 +6,7 @@ import HeadGuest from './HeadGuest';
 interface MainProps {
   film: FilmType;
   filmsList: FilmType[];
-  onClickHandler?: (item: FilmType) => void;
+  onClickHandler: (item: FilmType) => void;
 }
 
 const Main: React.FC<MainProps> = ({ film, filmsList, onClickHandler }) => (

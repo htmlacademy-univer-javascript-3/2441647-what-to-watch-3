@@ -7,8 +7,9 @@ const AddReviewForm = () => {
     rating: 5,
   });
   const handleFieldChange = (event: SyntheticEvent) => {
-    const { name, value } = event.target;
-    event.target.style.checked = true;
+    const { name, value } = event.target as HTMLInputElement;
+    const css = event.target as HTMLInputElement;
+    css.checked = true;
     console.log(event);
     setFormData({ ...formData, [name]: value });
   };

@@ -9,7 +9,7 @@ interface MovieCardProps {
   promo: string;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
-  onClickHandler: (item: FilmType) => void;
+  onClickHandler?: (item: FilmType) => void;
 }
 
 const MovieCard: React.FC<MovieCardProps> = ({
