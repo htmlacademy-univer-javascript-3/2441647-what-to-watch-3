@@ -1,24 +1,37 @@
-
 import React from 'react';
+import { FilmType } from '../mocks/films';
+import { Link } from 'react-router-dom';
 
 interface MovieCardProps {
+  filmId: number;
   filmName: string;
+  film: FilmType;
+  promo: string;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+  onClickHandler: (item: FilmType) => void;
 }
 
-const MovieCard: React.FC<MovieCardProps> = ({ filmName }) => (
-  <article className="small-film-card catalog__films-card">
+const MovieCard: React.FC<MovieCardProps> = ({
+  filmName,
+  promo,
+  onClickHandler,
+  film,
+  filmId,
+  ...others
+}) => (
+  <article className="small-film-card catalog__films-card" {...others}>
     <div className="small-film-card__image">
-      <img
-        src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-        alt={filmName}
-        width="280"
-        height="175"
-      />
+      <img src={promo} alt={filmName} width="280" height="175" />
     </div>
     <h3 className="small-film-card__title">
-      <a className="small-film-card__link" href="film-page.html">
+      <Link
+        to={`/films/${filmId}`}
+        className="small-film-card__link"
+        onClick={() => onClickHandler(film)}
+      >
         {filmName}
-      </a>
+      </Link>
     </h3>
   </article>
 );
