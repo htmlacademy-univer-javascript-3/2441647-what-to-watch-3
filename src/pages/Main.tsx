@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import FilmsList from '../components/FilmsList';
 import { FilmType } from '../mocks/films';
 import HeadGuest from './HeadGuest';
+
 interface MainProps {
   film: FilmType;
   filmsList: FilmType[];

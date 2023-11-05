@@ -1,6 +1,7 @@
 import React from 'react';
 import { FilmType } from '../mocks/films';
 import { Link } from 'react-router-dom';
+import { VideoPlayer } from './VideoPlayer';
 
 interface MovieCardProps {
   filmId: number;
@@ -21,9 +22,13 @@ const MovieCard: React.FC<MovieCardProps> = ({
   ...others
 }) => (
   <article className="small-film-card catalog__films-card" {...others}>
-    <div className="small-film-card__image">
-      <img src={promo} alt={filmName} width="280" height="175" />
-    </div>
+    <VideoPlayer
+      videoSrc={
+        'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm'
+      }
+      poster={promo}
+    />
+
     <h3 className="small-film-card__title">
       <Link
         to={`/films/${filmId}`}
