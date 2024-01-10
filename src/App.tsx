@@ -10,6 +10,7 @@ import Review from './pages/Review';
 import { FilmType, filmsList } from './mocks/films';
 import { useCallback, useEffect, useState } from 'react';
 import Player from './pages/Player';
+
 function App(): JSX.Element {
   const [currentFilm, setCurrentFilm] = useState(filmsList[0]);
 
